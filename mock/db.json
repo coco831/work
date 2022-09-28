@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "username": "大熊",
-      "password": "123456",
+      "email": "admin@qq.com",
+      "password": "$2a$10$/7YOvV0QX480SeLroVpDle67sq87RSl1M8O0mMQE0hfDfelFa4bBW",
       "id": 1
     }
   ]
