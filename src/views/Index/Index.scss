@@ -1,0 +1,17 @@
+.Index {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    h2 {
+      color: inherit;
+    }
+  }
+  .main{
+    height: calc(100vh - 64px);
+  }
+  .content{
+    background: white;
+  }
+}

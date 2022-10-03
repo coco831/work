@@ -3,13 +3,15 @@ import './Login.scss'
 import { Button, Form, Input, message } from 'antd'
 import ParticlesBg from 'particles-bg'
 import { login } from '../../api/users'
+import {useNavigate} from 'react-router-dom'
 
 export default function Login() {
+  const navigate= useNavigate();
 
   const onFinish = (values) => {
     console.log(values);
     login(values).then((res)=>{
-      
+      navigate('/');
       message.success('登录成功');
     }).catch((res)=>{
       
