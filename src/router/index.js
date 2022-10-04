@@ -3,6 +3,7 @@ import {
 } from "react-router-dom"
 
 import { lazy } from "react";
+import Auth from "../components/Auth/Auth"
 
 const CheckAdd = lazy(() => import('../views/CheckAdd/CheckAdd'));
 const CheckChange = lazy(() => import('../views/CheckChange/CheckChange'));
@@ -15,7 +16,7 @@ const UsersList = lazy(() => import('../views/UserList/UserList'));
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Index />,
+    element: <Auth><Index /></Auth>,
     children: [
       {
         path: 'oa/home',

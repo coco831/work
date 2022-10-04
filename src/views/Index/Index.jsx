@@ -1,6 +1,6 @@
 import React from 'react';
 import './Index.scss';
-// import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {
   LaptopOutlined,
   NotificationOutlined,
@@ -47,12 +47,12 @@ export default function index() {
         <h2>用户管理系统</h2>
 
         <Dropdown overlay={menu} arrow>
-          <Space style={{height:'26px',lineHeight:'26px'}}
-          >管理员: admin <DownOutlined/>
+          <Space style={{ height: '26px', lineHeight: '26px' }}>
+            管理员: admin <DownOutlined />
           </Space>
         </Dropdown>
       </Header>
-      <Layout className='main'>
+      <Layout className="main">
         <Sider width={200} className="site-layout-background">
           <Menu
             mode="inline"
@@ -87,7 +87,7 @@ export default function index() {
               minHeight: 280,
             }}
           >
-            Content
+            <Outlet />
           </Content>
         </Layout>
       </Layout>

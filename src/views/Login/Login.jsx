@@ -4,14 +4,20 @@ import { Button, Form, Input, message } from 'antd'
 import ParticlesBg from 'particles-bg'
 import { login } from '../../api/users'
 import {useNavigate} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
 
 export default function Login() {
   const navigate= useNavigate();
+  const dispatch=useDispatch()
 
   const onFinish = (values) => {
     console.log(values);
     login(values).then((res)=>{
       navigate('/');
+      dispatch({
+        type:'users/updateInfos',
+        payload:res.data
+      });
       message.success('登录成功');
     }).catch((res)=>{
       
