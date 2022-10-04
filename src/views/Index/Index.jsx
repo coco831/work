@@ -7,6 +7,7 @@ import {
   UserOutlined,
   DownOutlined,
 } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
 import { Breadcrumb, Layout, Menu, Dropdown, Space } from 'antd';
 const { Header, Content, Sider } = Layout;
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -26,21 +27,35 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
     };
   }
 );
-const menu = (
-  <Menu
-    items={[
-      {
-        key: '1',
-        label: '个人中心',
-      },
-      {
-        key: '2',
-        label: '退出登录',
-      },
-    ]}
-  />
-);
-export default function index() {
+
+export default function Index() {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    console.log(123);
+    dispatch({
+      type:'users/clearInfos'
+    })
+    setTimeout(()=>{},1000)
+    window.location.replace("/login")
+  };
+  const menu = (
+    <Menu
+      items={[
+        {
+          key: '1',
+          label: '个人中心',
+        },
+        {
+          key: '2',
+          label: <span onClick={handleLogout}>退出登录</span>,
+        },
+      ]}
+    />
+  );
+  const infos = useSelector((state) => state.users.infos);
+  const role = infos && infos.user.role;
+  const name = infos && infos.user.name;
+
   return (
     <Layout className="Index">
       <Header className="header">
@@ -48,7 +63,7 @@ export default function index() {
 
         <Dropdown overlay={menu} arrow>
           <Space style={{ height: '26px', lineHeight: '26px' }}>
-            管理员: admin <DownOutlined />
+            {role}: {name} <DownOutlined />
           </Space>
         </Dropdown>
       </Header>

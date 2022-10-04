@@ -11,6 +11,9 @@ export const usersSlice = createSlice({
     },
     clearInfos: (state) => {
       state.infos = {}
+    },
+    clearInfos:(state)=>{
+      state.infos={}
     }
   }
 });

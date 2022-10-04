@@ -3,7 +3,16 @@
     {
       "email": "admin@qq.com",
       "password": "$2a$10$/7YOvV0QX480SeLroVpDle67sq87RSl1M8O0mMQE0hfDfelFa4bBW",
-      "id": 1
+      "id": 1,
+      "name": "admin",
+      "role": "管理员"
+    },
+    {
+      "email": "xiaoming@qq.com",
+      "password": "$2a$10$d3rB2mBovw6WdldFDe5yje4AoHutA8HL97n2M848D8u403SuHOV0W",
+      "name": "小明",
+      "role": "员工",
+      "id": 2
     }
   ]
 }
