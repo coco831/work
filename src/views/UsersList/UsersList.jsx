@@ -1,5 +1,5 @@
 import React from 'react'
-import './UserList.scss'
+import './UsersList.scss'
 
 export default function UserList() {
   return (

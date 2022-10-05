@@ -1,42 +1,28 @@
 import React from 'react';
 import './Index.scss';
-import { Outlet } from 'react-router-dom';
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-  DownOutlined,
-} from '@ant-design/icons';
+import { Outlet, useLocation } from 'react-router-dom';
+import { DownOutlined } from '@ant-design/icons';
+import permissionList from '../../utils/permission';
+import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { Breadcrumb, Layout, Menu, Dropdown, Space } from 'antd';
 const { Header, Content, Sider } = Layout;
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
-  (icon, index) => {
-    const key = String(index + 1);
-    return {
-      key: `sub${key}`,
-      icon: React.createElement(icon),
-      label: `subnav ${key}`,
-      children: new Array(4).fill(null).map((_, j) => {
-        const subKey = index * 4 + j + 1;
-        return {
-          key: subKey,
-          label: `option${subKey}`,
-        };
-      }),
-    };
-  }
-);
 
 export default function Index() {
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  let defaultSelectedKey=location.pathname;
+  let defaultOpenKey=defaultSelectedKey.match(/\/[^\/]+/)[0]
+
+
   const handleLogout = () => {
     console.log(123);
     dispatch({
-      type:'users/clearInfos'
-    })
-    setTimeout(()=>{},1000)
-    window.location.replace("/login")
+      type: 'users/clearInfos',
+    });
+    setTimeout(() => {}, 1000);
+    window.location.replace('/login');
   };
   const menu = (
     <Menu
@@ -56,6 +42,12 @@ export default function Index() {
   const role = infos && infos.user.role;
   const name = infos && infos.user.name;
 
+  let items2 = _.cloneDeep(permissionList);
+  items2 = items2.filter((v) => {
+    v.children = v.children.filter((v) => v.auths.includes(role));
+    return v.auths.includes(role);
+  });
+
   return (
     <Layout className="Index">
       <Header className="header">
@@ -71,8 +63,8 @@ export default function Index() {
         <Sider width={200} className="site-layout-background">
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={[defaultSelectedKey]}
+            defaultOpenKeys={[defaultOpenKey]}
             style={{
               height: '100%',
               borderRight: 0,

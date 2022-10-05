@@ -2,17 +2,25 @@ import {
   createBrowserRouter
 } from "react-router-dom"
 
-import { lazy } from "react";
+// import { lazy } from "react";
 import Auth from "../components/Auth/Auth"
 
-const CheckAdd = lazy(() => import('../views/CheckAdd/CheckAdd'));
+import Index from "../views/Index/Index";
+import CheckAdd from "../views/CheckAdd/CheckAdd";
+import CheckList from "../views/CheckList/CheckList";
+import CheckChange from "../views/CheckChange/CheckChange";
+import OaHome from "../views/OaHome/OaHome";
+import Login from "../views/Login/Login";
+import UsersList from "../views/UsersList/UsersList";
+
+/* const CheckAdd = lazy(() => import('../views/CheckAdd/CheckAdd'));
 const CheckChange = lazy(() => import('../views/CheckChange/CheckChange'));
 const CheckList = lazy(() => import('../views/CheckList/CheckList'));
 const Index = lazy(() => import('../views/Index/Index'));
 const Login = lazy(() => import('../views/Login/Login'));
 const OaHome = lazy(() => import('../views/OaHome/OaHome'));
 const UsersList = lazy(() => import('../views/UserList/UserList'));
-
+ */
 const router = createBrowserRouter([
   {
     path: '/',
@@ -41,8 +49,8 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'/login',
-    element:<Login/>
+    path: '/login',
+    element: <Login />
   },
   {
     path: '*',

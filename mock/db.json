@@ -13,6 +13,13 @@
       "name": "小明",
       "role": "员工",
       "id": 2
+    },
+    {
+      "email": "daqiang@qq.com",
+      "password": "$2a$10$gw71ohzOLdGe8HyIW5v2eeX610XU4hI3B2Udy0lDSrKQ9bxDVjOfS",
+      "name": "大强",
+      "role": "经理",
+      "id": 3
     }
   ]
 }
